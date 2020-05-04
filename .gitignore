@@ -4,3 +4,4 @@ MyProject.iml
 myproject.xml
 myproject.properties
 out
+*.class
