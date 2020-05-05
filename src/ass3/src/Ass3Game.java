@@ -14,7 +14,4 @@ public class Ass3Game {
         game.initialize();
         game.run();
     }
-    //adding a change to check branches
-    //another change in the mater
-    //change on the remote branch again
 }
