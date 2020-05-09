@@ -1,3 +1,5 @@
 //ID:316441534
-public class BaseExpression {
+
+public abstract class BaseExpression implements Expression {
+
 }
