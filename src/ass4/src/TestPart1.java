@@ -14,6 +14,5 @@ public class TestPart1 {
         map.put(v2.getVar(), (double) 50);
         System.out.println(e.evaluate(map));
         System.out.println(e2.evaluate(map));
-        //adding some changes to check
     }
 }
