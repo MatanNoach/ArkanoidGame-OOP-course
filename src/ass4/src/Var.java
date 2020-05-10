@@ -53,17 +53,25 @@ public class Var implements Expression {
     }
 
     @Override
-    public Expression assign(String var, Expression expression) {
+    public Expression assign(String variable, Expression expression) {
+        if (variable.equals(this.var)) {
+            return expression;
+        }
         return null;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    /**
+     * The function compares two variable signs.
+     *
+     * @param variable The variable to compare
+     * @return True if they are equal and false otherwise
+     */
+    public boolean equals(String variable) {
+        return var.equals(variable);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return var;
     }
 }

@@ -2,8 +2,12 @@
 
 import java.util.Map;
 
-
+/**
+ * The class represents the plus function in an expression.
+ */
 public class Plus extends BinaryExpression {
+    static final String PLUS_SIGN = "+";
+
     /**
      * Constructor.
      *
@@ -11,12 +15,7 @@ public class Plus extends BinaryExpression {
      * @param e2 The second expression
      */
     public Plus(Expression e1, Expression e2) {
-        super(e1, e2);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
+        super(e1, e2, PLUS_SIGN);
     }
 
     @Override
@@ -25,12 +24,7 @@ public class Plus extends BinaryExpression {
     }
 
     @Override
-    public double evaluate() throws Exception {
-        return 0;
-    }
-
-    @Override
     public Expression assign(String var, Expression expression) {
-        return null;
+        return new Plus(getE1().assign(var, expression), getE2().assign(var, expression));
     }
 }

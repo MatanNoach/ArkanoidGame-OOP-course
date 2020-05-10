@@ -1,11 +1,26 @@
+//ID:316441534
+
 import java.util.List;
 
-//ID:316441534
+/**
+ * The class represents a mathematical expression with 2 variables.
+ * Variables:
+ * e1 - The first expression
+ * e2 - The second expression
+ */
 public abstract class BinaryExpression extends BaseExpression {
     private Expression e1;
     private Expression e2;
 
-    public BinaryExpression(Expression e1, Expression e2) {
+    /**
+     * Constructor.
+     *
+     * @param e1   The first expression
+     * @param e2   The second expression
+     * @param sign The expression's sign
+     */
+    public BinaryExpression(Expression e1, Expression e2, String sign) {
+        super(sign);
         this.e1 = e1;
         this.e2 = e2;
     }
@@ -22,6 +37,11 @@ public abstract class BinaryExpression extends BaseExpression {
             return l1;
         }
         return l2;
+    }
+
+    @Override
+    public String toString() {
+        return  "(" + getE1().toString() + " " + getSign() + " " + getE2().toString() + ")";
     }
 
     /**

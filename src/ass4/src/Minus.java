@@ -2,7 +2,12 @@
 
 import java.util.Map;
 
+/**
+ * The class represents the minus function in an expression.
+ */
 public class Minus extends BinaryExpression {
+    static final String MINUS_SIGN = "-";
+
     /**
      * Constructor.
      *
@@ -10,14 +15,8 @@ public class Minus extends BinaryExpression {
      * @param e2 The second expression
      */
     public Minus(Expression e1, Expression e2) {
-        super(e1, e2);
+        super(e1, e2, MINUS_SIGN);
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
@@ -25,12 +24,7 @@ public class Minus extends BinaryExpression {
     }
 
     @Override
-    public double evaluate() throws Exception {
-        return 0;
-    }
-
-    @Override
     public Expression assign(String var, Expression expression) {
-        return null;
+        return new Minus(getE1().assign(var, expression), getE2().assign(var, expression));
     }
 }
