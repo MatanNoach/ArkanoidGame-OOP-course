@@ -42,4 +42,21 @@ public interface Expression {
      * @return The new expression formed
      */
     Expression assign(String var, Expression expression);
+
+    /**
+     * Differentiate a mathematical expression by a certain var.
+     *
+     * @param var The var to differentiate by
+     * @return The new equation.
+     */
+    Expression differentiate(String var);
+
+    /**
+     * Simplify an expression.
+     * <p>
+     * The function removes unnecessary parts of the expression so it could be more readable.
+     * </p>
+     * @return The simplified version of the expression
+     */
+    Expression simplify();
 }

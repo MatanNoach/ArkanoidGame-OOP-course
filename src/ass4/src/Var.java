@@ -42,7 +42,7 @@ public class Var implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-        return 0;
+        throw new Exception("Can't evaluate a variable");
     }
 
     @Override
@@ -73,5 +73,18 @@ public class Var implements Expression {
     @Override
     public String toString() {
         return var;
+    }
+
+    @Override
+    public Expression differentiate(String variable) {
+        if (variable.equals(var)) {
+            return new Num(1);
+        }
+        return new Num(0);
+    }
+
+    @Override
+    public Expression simplify() {
+        return this;
     }
 }

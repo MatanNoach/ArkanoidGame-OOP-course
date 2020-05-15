@@ -68,4 +68,13 @@ public class Num implements Expression {
         return "" + num;
     }
 
+    @Override
+    public Expression differentiate(String var) {
+        return new Num(0);
+    }
+
+    @Override
+    public Expression simplify() {
+        return this;
+    }
 }

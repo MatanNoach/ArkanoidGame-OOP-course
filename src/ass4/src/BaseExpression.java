@@ -24,7 +24,7 @@ public abstract class BaseExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-        return 0;
+        throw new Exception("This expression is not a number");
     }
 
 }

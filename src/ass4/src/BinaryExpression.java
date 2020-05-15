@@ -41,7 +41,7 @@ public abstract class BinaryExpression extends BaseExpression {
 
     @Override
     public String toString() {
-        return  "(" + getE1().toString() + " " + getSign() + " " + getE2().toString() + ")";
+        return "(" + getE1().toString() + " " + getSign() + " " + getE2().toString() + ")";
     }
 
     /**

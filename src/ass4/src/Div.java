@@ -20,11 +20,62 @@ public class Div extends BinaryExpression {
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
-        return getE1().evaluate(assignment) / getE2().evaluate(assignment);
+        double e1Value = getE1().evaluate(assignment);
+        double e2Value = getE2().evaluate(assignment);
+        try {
+            if (e2Value == 0) {
+                throw new Exception("Invalid denominator");
+            }
+        } catch (Exception e) {
+
+        }
+        return e1Value / e2Value;
     }
 
     @Override
     public Expression assign(String var, Expression expression) {
         return new Div(getE1().assign(var, expression), getE2().assign(var, expression));
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        Expression e1 = getE1();
+        Expression e2 = getE2();
+        Expression numerator = new Minus(new Mult(e1.differentiate(var), e2), new Mult(e1, e2.differentiate(var)));
+        Expression denominator = new Pow(e2, new Num(2));
+        return new Div(numerator, denominator);
+    }
+
+    @Override
+    public Expression simplify() {
+        Expression e1 = getE1().simplify();
+        Expression e2 = getE2().simplify();
+        double r1 = 0, r2;
+        boolean isNum1 = true;
+        //checks if the first expression is a number
+        try {
+            r1 = e1.evaluate();
+        } catch (Exception e) {
+            isNum1 = false;
+        }
+        //checks if the second expression is a number
+        try {
+            r2 = e2.evaluate();
+            //if it is a number, simplify by any of this conditions
+            if (r2 == 1) {
+                return e1;
+            }
+            //if they are both numbers, simplify them
+            if (isNum1) {
+                return new Num(r1 / r2);
+            }
+        } catch (Exception e) {
+            //if both expressions are equal and they are not numbers, return 1
+            if (e1.equals(e2)) {
+                return new Num(1);
+            }
+        }
+        //return a new Div expression with the simplified expressions.
+        return new Div(e1, e2);
     }
 }

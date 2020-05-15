@@ -27,4 +27,44 @@ public class Minus extends BinaryExpression {
     public Expression assign(String var, Expression expression) {
         return new Minus(getE1().assign(var, expression), getE2().assign(var, expression));
     }
+
+    @Override
+    public Expression differentiate(String var) {
+        return new Minus(getE1().differentiate(var), getE2().differentiate(var));
+    }
+
+    @Override
+    public Expression simplify() {
+        Expression e1 = getE1().simplify();
+        Expression e2 = getE2().simplify();
+        double r1 = 0, r2;
+        boolean isNum1 = true;
+        //check if the first expression is a number
+        try {
+            r1 = e1.evaluate();
+            //if the first expression is zero, return the neg of the second
+            if (r1 == 0) {
+                return new Neg(e2);
+            }
+        } catch (Exception e) {
+            isNum1 = false;
+        }
+        //check if the second expression is number
+        try {
+            r2 = e2.evaluate();
+            if (r2 == 0) {
+                return e1;
+            }
+            //if both are numbers and equal return their minus result
+            if (isNum1) {
+                return new Num(r1 - r2);
+            }
+        } catch (Exception e) {
+            //if they both are not numbers and are equal, return 0
+            if (e1.equals(e2)) {
+                return new Num(0);
+            }
+        }
+        return new Minus(e1, e2);
+    }
 }
