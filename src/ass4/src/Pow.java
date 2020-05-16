@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represents a power function in a mathematical expression.
  */
@@ -19,8 +17,8 @@ public class Pow extends BinaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return Math.pow(getE1().evaluate(assignment), getE2().evaluate(assignment));
+    public double evaluate() throws Exception {
+        return Math.pow(getE1().evaluate(), getE2().evaluate());
     }
 
     @Override
@@ -68,9 +66,10 @@ public class Pow extends BinaryExpression {
             if (isNum1) {
                 return new Num(Math.pow(r1, r2));
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
+        //return a new pow with the simplified expressions
         return new Pow(e1, e2);
     }
 }

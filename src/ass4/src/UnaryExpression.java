@@ -23,7 +23,7 @@ public abstract class UnaryExpression extends BaseExpression {
 
     @Override
     public String toString() {
-        return  getSign() + "(" + getE().toString() + ")";
+        return getSign() + "(" + getE().toString() + ")";
     }
 
     /**

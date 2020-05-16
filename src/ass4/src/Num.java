@@ -29,7 +29,7 @@ public class Num implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
-        return evaluate();
+        return num;
     }
 
     @Override
@@ -45,22 +45,6 @@ public class Num implements Expression {
     @Override
     public Expression assign(String var, Expression expression) {
         return new Num(num);
-    }
-
-    /**
-     * The function checks if two doubles are equal by subtracting them and comparing them to epsilon.
-     * <p>
-     * if the result is smaller than epsilon, the difference between both numbers
-     * is so small that they are practically the same.
-     * </p>
-     *
-     * @param number The number to compare
-     * @return True if they are considered equals and false otherwise
-     */
-    public boolean equals(double number) {
-        double epsilon = 0.0000000001;
-        double result = Math.abs(number - num);
-        return epsilon >= result;
     }
 
     @Override

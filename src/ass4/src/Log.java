@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represents a log function in an expression.
  */
@@ -24,18 +22,14 @@ public class Log extends BinaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        double e1Value = getE1().evaluate(assignment);
-        double e2Value = getE2().evaluate(assignment);
-        try {
-            if (e1Value == 0) {
-                throw new Exception("Invalid Log exponent");
-            }
-            if (e2Value == 0 || e2Value == 1) {
-                throw new Exception("Invalid Log base");
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+    public double evaluate() throws Exception {
+        double e1Value = getE1().evaluate();
+        double e2Value = getE2().evaluate();
+        if (e1Value <= 0) {
+            throw new Exception("Invalid Log exponent");
+        }
+        if (e2Value <= 0 || e2Value == 1) {
+            throw new Exception("Invalid Log base");
         }
         return Math.log(e2Value) / Math.log(e1Value);
     }
@@ -65,7 +59,7 @@ public class Log extends BinaryExpression {
         //Checks if the first expression is a number
         try {
             r1 = e1.evaluate();
-            //if the first expression is 1, return 0
+            //if its 1, return 0
             if (r1 == 1) {
                 return new Num(0);
             }
@@ -74,16 +68,22 @@ public class Log extends BinaryExpression {
         }
         try {
             r2 = e2.evaluate();
-            //if there are both equal numbers, return 1
-            if (isNum1 && r1 == r2) {
-                return new Num(1);
+            //if they are both numbers
+            if (isNum1) {
+                //if they are equal, return 1
+                if (r1 == r2) {
+                    return new Num(1);
+                }
+                //else, return their evaluated result
+                return new Num(this.evaluate());
             }
         } catch (Exception e) {
-            //if they are both equal and not numbers, return 1
+            //if they are both equal, return 1
             if (e1.equals(e2)) {
                 return new Num(1);
             }
         }
+        //return a new log of the simplified expressions
         return new Log(e1, e2);
     }
 }

@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * represents a Negate function in a mathematical expression.
  */
@@ -15,11 +13,6 @@ public class Neg extends UnaryExpression {
      */
     public Neg(Expression e) {
         super(e, NEG_SIGN);
-    }
-
-    @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return getE().evaluate(assignment) * -1;
     }
 
     @Override
@@ -39,7 +32,7 @@ public class Neg extends UnaryExpression {
 
     @Override
     public Expression differentiate(String var) {
-        return getE().differentiate(var);
+        return new Neg(getE().differentiate(var));
     }
 
     @Override
@@ -49,13 +42,14 @@ public class Neg extends UnaryExpression {
         //check if the expression is number
         try {
             result = e.evaluate();
-            //if the number is negative, return it as positive
+            //if the number is negative, return its evaluated result
             if (result < 0) {
-                return new Num(result * -1);
+                return new Num(this.evaluate());
             }
-        } catch (Exception exception) {
+        } catch (Exception ignored) {
 
         }
+        //return a new neg of the simplified expression
         return new Neg(e);
     }
 }

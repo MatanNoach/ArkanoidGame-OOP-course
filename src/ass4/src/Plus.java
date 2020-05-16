@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represents the plus function in an expression.
  */
@@ -19,8 +17,8 @@ public class Plus extends BinaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return getE1().evaluate(assignment) + getE2().evaluate(assignment);
+    public double evaluate() throws Exception {
+        return getE1().evaluate() + getE2().evaluate();
     }
 
     @Override
@@ -42,7 +40,7 @@ public class Plus extends BinaryExpression {
         //Check if the first expression is Num
         try {
             r1 = e1.evaluate();
-            //if one of the numbers is zero, return the other one
+            //if one of the numbers is zero, return the other expression
             if (r1 == 0) {
                 return e2;
             }
@@ -52,6 +50,7 @@ public class Plus extends BinaryExpression {
         //Check if the second expression is Num
         try {
             r2 = e2.evaluate();
+            //if the number is zero, return the first expression
             if (r2 == 0) {
                 return e1;
             }
@@ -59,8 +58,9 @@ public class Plus extends BinaryExpression {
             if (isNum1) {
                 return new Num(r1 + r2);
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
+        //return a new Plus with the simplified expressions
         return new Plus(e1, e2);
     }
 }

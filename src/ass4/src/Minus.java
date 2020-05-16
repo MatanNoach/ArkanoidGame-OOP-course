@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represents the minus function in an expression.
  */
@@ -19,8 +17,8 @@ public class Minus extends BinaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return getE1().evaluate(assignment) - getE2().evaluate(assignment);
+    public double evaluate() throws Exception {
+        return getE1().evaluate() - getE2().evaluate();
     }
 
     @Override
@@ -42,7 +40,7 @@ public class Minus extends BinaryExpression {
         //check if the first expression is a number
         try {
             r1 = e1.evaluate();
-            //if the first expression is zero, return the neg of the second
+            //if its zero, return the neg of the second expression
             if (r1 == 0) {
                 return new Neg(e2);
             }
@@ -52,6 +50,7 @@ public class Minus extends BinaryExpression {
         //check if the second expression is number
         try {
             r2 = e2.evaluate();
+            //if its zero, return the first expression
             if (r2 == 0) {
                 return e1;
             }
@@ -60,11 +59,12 @@ public class Minus extends BinaryExpression {
                 return new Num(r1 - r2);
             }
         } catch (Exception e) {
-            //if they both are not numbers and are equal, return 0
+            //if they are both equal, return 0
             if (e1.equals(e2)) {
                 return new Num(0);
             }
         }
+        //return a new minus of the simplified expressions
         return new Minus(e1, e2);
     }
 }

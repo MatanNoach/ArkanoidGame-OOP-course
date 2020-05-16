@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represent the division function in an expression.
  */
@@ -19,15 +17,11 @@ public class Div extends BinaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        double e1Value = getE1().evaluate(assignment);
-        double e2Value = getE2().evaluate(assignment);
-        try {
-            if (e2Value == 0) {
-                throw new Exception("Invalid denominator");
-            }
-        } catch (Exception e) {
-
+    public double evaluate() throws Exception {
+        double e1Value = getE1().evaluate();
+        double e2Value = getE2().evaluate();
+        if (e2Value == 0) {
+            throw new Exception("Invalid denominator");
         }
         return e1Value / e2Value;
     }
@@ -50,27 +44,27 @@ public class Div extends BinaryExpression {
     public Expression simplify() {
         Expression e1 = getE1().simplify();
         Expression e2 = getE2().simplify();
-        double r1 = 0, r2;
+        double r2;
         boolean isNum1 = true;
         //checks if the first expression is a number
         try {
-            r1 = e1.evaluate();
+            e1.evaluate();
         } catch (Exception e) {
             isNum1 = false;
         }
         //checks if the second expression is a number
         try {
             r2 = e2.evaluate();
-            //if it is a number, simplify by any of this conditions
+            //it its value is 1, return the nominator
             if (r2 == 1) {
                 return e1;
             }
-            //if they are both numbers, simplify them
+            //if they are both numbers, return their evaluated value
             if (isNum1) {
-                return new Num(r1 / r2);
+                return new Num(this.evaluate());
             }
         } catch (Exception e) {
-            //if both expressions are equal and they are not numbers, return 1
+            //if both expressions are equal, return 1
             if (e1.equals(e2)) {
                 return new Num(1);
             }

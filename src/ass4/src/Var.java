@@ -31,12 +31,13 @@ public class Var implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
+        double value;
         //if there is a variable in the expression, return it
         try {
-            return assignment.get(var);
-        } catch (NullPointerException e) { // else, throw an exception
-            System.out.println("The variable does not exist in the expression!");
-            throw e;
+            value = assignment.get(var);
+            return value;
+        } catch (Exception e) { // else, throw an exception
+            throw new Exception("The variable does not exists in the map!");
         }
     }
 
@@ -57,17 +58,13 @@ public class Var implements Expression {
         if (variable.equals(this.var)) {
             return expression;
         }
-        return null;
+        return this;
     }
 
-    /**
-     * The function compares two variable signs.
-     *
-     * @param variable The variable to compare
-     * @return True if they are equal and false otherwise
-     */
-    public boolean equals(String variable) {
-        return var.equals(variable);
+    @Override
+    public boolean equals(Object obj) {
+        Var v = (Var) obj;
+        return this.var.equals(v.getVar());
     }
 
     @Override

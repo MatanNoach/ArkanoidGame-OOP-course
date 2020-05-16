@@ -1,7 +1,5 @@
 //ID:316441534
 
-import java.util.Map;
-
 /**
  * The class represents a sinus function in an expression.
  */
@@ -18,8 +16,8 @@ public class Sin extends UnaryExpression {
     }
 
     @Override
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        return Math.sin(Math.toRadians(getE().evaluate(assignment)));
+    public double evaluate() throws Exception {
+        return Math.sin(Math.toRadians(getE().evaluate()));
     }
 
     @Override
@@ -29,7 +27,7 @@ public class Sin extends UnaryExpression {
 
     @Override
     public Expression differentiate(String var) {
-        return new Neg(new Mult(getE().differentiate(var), new Cos(getE())));
+        return new Mult(getE().differentiate(var), new Cos(getE()));
     }
 
     @Override
@@ -51,9 +49,10 @@ public class Sin extends UnaryExpression {
             if (result % 90 == 0) {
                 return new Num(1);
             }
-        } catch (Exception exception) {
+        } catch (Exception ignored) {
 
         }
+        //return a new sin with the simplified expressions
         return new Sin(e);
     }
 }
