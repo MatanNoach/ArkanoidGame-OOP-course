@@ -17,7 +17,12 @@ public class Neg extends UnaryExpression {
 
     @Override
     public double evaluate() throws Exception {
-        return getE().evaluate() * -1;
+        double result = getE().evaluate();
+        //handles -0.0 case
+        if (result == 0) {
+            return 0;
+        }
+        return result * -1;
     }
 
     @Override
@@ -42,6 +47,10 @@ public class Neg extends UnaryExpression {
         //check if the expression is number
         try {
             result = e.evaluate();
+            //if the number is 0, return 0 instead of -0
+            if (result == 0) {
+                return new Num(0);
+            }
             //if the number is negative, return its evaluated result
             if (result < 0) {
                 return new Num(this.evaluate());
