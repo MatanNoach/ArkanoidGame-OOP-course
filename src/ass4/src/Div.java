@@ -44,11 +44,14 @@ public class Div extends BinaryExpression {
     public Expression simplify() {
         Expression e1 = getE1().simplify();
         Expression e2 = getE2().simplify();
-        double r2;
+        double r1 = 0, r2;
         boolean isNum1 = true;
         //checks if the first expression is a number
         try {
-            e1.evaluate();
+            r1 = e1.evaluate();
+            if (r1 == 0) {
+                return new Num(0);
+            }
         } catch (Exception e) {
             isNum1 = false;
         }
@@ -65,7 +68,7 @@ public class Div extends BinaryExpression {
             }
         } catch (Exception e) {
             //if both expressions are equal, return 1
-            if (e1.equals(e2)) {
+            if (e1.toString().equals(e2.toString())) {
                 return new Num(1);
             }
         }

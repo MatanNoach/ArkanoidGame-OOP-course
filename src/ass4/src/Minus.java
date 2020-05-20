@@ -60,7 +60,7 @@ public class Minus extends BinaryExpression {
             }
         } catch (Exception e) {
             //if they are both equal, return 0
-            if (e1.equals(e2)) {
+            if (e1.toString().equals(e2.toString())) {
                 return new Num(0);
             }
         }

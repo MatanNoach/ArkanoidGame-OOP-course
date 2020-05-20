@@ -17,7 +17,24 @@ public class Sin extends UnaryExpression {
 
     @Override
     public double evaluate() throws Exception {
-        return Math.sin(Math.toRadians(getE().evaluate()));
+        double result = getE().evaluate();
+        //if the number is divided by 180, return 0
+        if (result % 180 == 0) {
+            return 0;
+        }
+        //if the number is divided by 270, return -1
+        if (result % 270 == 0) {
+            return -1;
+        }
+        //if the number us divided by 90, return 1
+        if (result % 90 == 0) {
+            if (result > 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+        return Math.sin(Math.toRadians(result));
     }
 
     @Override
@@ -36,19 +53,8 @@ public class Sin extends UnaryExpression {
         double result;
         //check if the expression is a num
         try {
-            result = e.evaluate();
-            //if the number is divided by 180, return 0
-            if (result % 180 == 0) {
-                return new Num(0);
-            }
-            //if the number is divided by 270, return -1
-            if (result % 270 == 0) {
-                return new Num(-1);
-            }
-            //if the number us divided by 90, return 1
-            if (result % 90 == 0) {
-                return new Num(1);
-            }
+            result = this.evaluate();
+            return new Num(result);
         } catch (Exception ignored) {
 
         }

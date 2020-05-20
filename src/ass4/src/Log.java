@@ -4,7 +4,7 @@
  * The class represents a log function in an expression.
  */
 public class Log extends BinaryExpression {
-    static final String LOG_SIGN = "Log";
+    static final String LOG_SIGN = "log";
 
     /**
      * Constructor.
@@ -25,11 +25,11 @@ public class Log extends BinaryExpression {
     public double evaluate() throws Exception {
         double e1Value = getE1().evaluate();
         double e2Value = getE2().evaluate();
-        if (e1Value <= 0) {
-            throw new Exception("Invalid Log exponent");
-        }
-        if (e2Value <= 0 || e2Value == 1) {
+        if (e1Value <= 0 || e1Value == 1) {
             throw new Exception("Invalid Log base");
+        }
+        if (e2Value <= 0) {
+            throw new Exception("Invalid Log exponent");
         }
         return Math.log(e2Value) / Math.log(e1Value);
     }
@@ -79,7 +79,7 @@ public class Log extends BinaryExpression {
             }
         } catch (Exception e) {
             //if they are both equal, return 1
-            if (e1.equals(e2)) {
+            if (e1.toString().equals(e2.toString())) {
                 return new Num(1);
             }
         }

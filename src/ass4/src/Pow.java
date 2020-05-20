@@ -27,6 +27,11 @@ public class Pow extends BinaryExpression {
     }
 
     @Override
+    public String toString() {
+        return "(" + getE1().toString() + getSign() + getE2().toString() + ")";
+    }
+
+    @Override
     public Expression differentiate(String var) {
         Expression e1 = getE1();
         Expression e2 = getE2();

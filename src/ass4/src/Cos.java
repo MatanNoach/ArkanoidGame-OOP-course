@@ -17,6 +17,19 @@ public class Cos extends UnaryExpression {
 
     @Override
     public double evaluate() throws Exception {
+        double result = getE().evaluate();
+        //if the number is divided by 360, return 1
+        if (result % 360 == 0) {
+            return 1;
+        }
+        //if the number is divided by 180, return -1
+        if (result % 180 == 0) {
+            return -1;
+        }
+        //if the number is divided by 90 return 0
+        if (result % 90 == 0) {
+            return 0;
+        }
         return Math.cos(Math.toRadians(getE().evaluate()));
     }
 
@@ -36,19 +49,8 @@ public class Cos extends UnaryExpression {
         double result;
         //checks if the expression is a number
         try {
-            result = e.evaluate();
-            //if the number is divided by 360, return 1
-            if (result % 360 == 0) {
-                return new Num(1);
-            }
-            //if the number is divided by 180, return -1
-            if (result % 180 == 0) {
-                return new Num(-1);
-            }
-            //if the number is divided by 90 return 0
-            if (result % 90 == 0) {
-                return new Num(0);
-            }
+            result = this.evaluate();
+            return new Num(result);
         } catch (Exception ignored) {
 
         }
