@@ -1,4 +1,5 @@
 //ID: 316441534
+package gui.shapes;
 
 import java.util.List;
 
@@ -13,10 +14,10 @@ public class Point {
     private double y;
 
     /**
-     * Point's constructor.
+     * gui.shapes.Point's constructor.
      *
-     * @param x Point's x value
-     * @param y Point's y value
+     * @param x gui.shapes.Point's x value
+     * @param y gui.shapes.Point's y value
      **/
     public Point(double x, double y) {
         this.x = x;
@@ -105,7 +106,7 @@ public class Point {
     }
 
     /**
-     * @return String the Point's values
+     * @return String the gui.shapes.Point's values
      */
     public String toString() {
         return ("X value: " + this.x + " Y value: " + this.y);

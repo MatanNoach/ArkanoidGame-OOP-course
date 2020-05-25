@@ -1,7 +1,8 @@
 //ID: 316441534
+package gui.shapes;
 
 /**
- * Velocity specifies the change in position on the `x` and the `y` axes.
+ * gui.shapes.Velocity specifies the change in position on the `x` and the `y` axes.
  * Parameters:
  * dx - The change in x axis
  * dy - The change in y axis

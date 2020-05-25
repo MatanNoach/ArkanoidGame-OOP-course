@@ -1,7 +1,14 @@
 //ID:316441534
+package gui.gameobjects;
 
+import gui.shapes.Ball;
+import gui.shapes.Velocity;
+import gui.gamedata.Game;
 import biuoop.DrawSurface;
+import gui.gamedata.GameSettings;
 import biuoop.KeyboardSensor;
+import gui.shapes.Point;
+import gui.shapes.Rectangle;
 
 /**
  * The class represent the paddle in the game which is also the player.
@@ -87,7 +94,7 @@ public class Paddle implements Sprite, Collidable {
     }
 
     @Override
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         //make sure the program doesn't crush if there is a collision on the bottom line
         if (collisionPoint.getY() == this.rectangle.getUpperLeft().getY() + this.rectangle.getHeight()) {
             return new Velocity(currentVelocity.getDx(), -currentVelocity.getDy());
@@ -117,6 +124,11 @@ public class Paddle implements Sprite, Collidable {
     private int findHitSpot(double rectangleWidth, double collisionX) {
         double a = collisionX - this.rectangle.getUpperLeft().getX();
         double b = rectangleWidth / 5;
-        return (int) (a / b);
+        int value = (int) (a / b);
+        //edge fix
+        if (value == 5) {
+            value = 4;
+        }
+        return value;
     }
 }

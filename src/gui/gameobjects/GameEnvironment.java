@@ -1,4 +1,10 @@
 //ID: 316441534
+package gui.gameobjects;
+
+import gui.gamedata.GameSettings;
+import gui.shapes.Line;
+import gui.shapes.Point;
+import gui.shapes.Rectangle;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -38,6 +44,15 @@ public class GameEnvironment {
         if (c != null) {
             this.collidables.add(c);
         }
+    }
+
+    /**
+     * Removes a collidable for the list
+     *
+     * @param c The collidable to remove
+     */
+    public void removeCollidable(Collidable c) {
+        this.collidables.remove(c);
     }
 
     /**

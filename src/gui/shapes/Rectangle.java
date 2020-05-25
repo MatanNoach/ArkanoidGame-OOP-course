@@ -1,4 +1,5 @@
 //ID: 316441534
+package gui.shapes;
 
 import biuoop.DrawSurface;
 
@@ -46,7 +47,7 @@ public class Rectangle {
     }
 
     /**
-     * Rectangle's constructor with different parameters.
+     * gui.shapes.Rectangle's constructor with different parameters.
      *
      * @param upperLeft The upper left point of the rectangle
      * @param width     The rectangle's width

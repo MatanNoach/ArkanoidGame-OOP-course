@@ -1,4 +1,5 @@
 //ID:316441534
+package gui.gameobjects;
 
 import biuoop.DrawSurface;
 
@@ -29,6 +30,7 @@ public class SpriteCollection {
 
     /**
      * Adds a sprite to the list.
+     *
      * @param s The sprite to add
      */
     public void addSprite(Sprite s) {
@@ -36,16 +38,27 @@ public class SpriteCollection {
     }
 
     /**
+     * Removes a sprite from the list
+     *
+     * @param s The sprite to remove
+     */
+    public void removeSprite(Sprite s) {
+        this.sprites.remove(s);
+    }
+
+    /**
      * The function runs the timePassed function for every sprite.
      */
     public void notifyAllTimePassed() {
-        for (Sprite s : sprites) {
+        List<Sprite> spritesCopy = new ArrayList<>(this.sprites);
+        for (Sprite s : spritesCopy) {
             s.timePassed();
         }
     }
 
     /**
      * The function draws all sprites on the screen.
+     *
      * @param d The draw surface to draw on.
      */
     public void drawAllOn(DrawSurface d) {

@@ -1,4 +1,5 @@
 //ID:316441534
+package gui.gamedata;
 
 /**
  * The class holds the game settings
@@ -9,9 +10,9 @@
  * speed - The ball's and paddle's speed.
  */
 public class GameSettings {
-    static final int WINDOW_HEIGHT = 600;
-    static final int WINDOW_WIDTH = 800;
-    static final int BLOCK_EDGE_SIZE = 10;
+    public static final int WINDOW_HEIGHT = 600;
+    public static final int WINDOW_WIDTH = 800;
+    public static final int BLOCK_EDGE_SIZE = 10;
     private double speed;
 
     /**

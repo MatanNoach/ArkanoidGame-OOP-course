@@ -1,3 +1,8 @@
+//ID: 316441534
+package gui.gameobjects;
+
+import gui.shapes.Point;
+
 /**
  * The class represents information about a collision.
  * Variables:

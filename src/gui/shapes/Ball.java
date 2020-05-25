@@ -1,16 +1,21 @@
 //ID: 316441534
+package gui.shapes;
 
 import biuoop.DrawSurface;
-
+import gui.gameobjects.Sprite;
+import gui.gameobjects.GameEnvironment;
+import gui.gameobjects.CollisionInfo;
+import gui.gamedata.Game;
+import gui.gamedata.GameSettings;
 import java.awt.Color;
 
 /**
- * The class represents a Ball in a cartesian coordinate system.
+ * The class represents a gui.shapes.Ball in a cartesian coordinate system.
  * Parameters:
  * center - The point center point of the ball
  * radius - The radius of the ball
  * color - The color of the ball
- * Velocity - The change in the ball's position
+ * gui.shapes.Velocity - The change in the ball's position
  * gameEnvironment - All of the objects the ball can hit
  */
 public class Ball implements Sprite {
@@ -137,7 +142,7 @@ public class Ball implements Sprite {
         //if the ball has reached an edge, inform the object with hit() function, and change the velocity
         //to the one returned from it.
         if (edge) {
-            Velocity newVelocity = collision.getCollisionObject().hit(collision.getCollisionPoint(), this.velocity);
+            Velocity newVelocity = collision.getCollisionObject().hit(this, collision.getCollisionPoint(), this.velocity);
             setVelocity(newVelocity);
         }
         //apply the velocity change to the ball's center

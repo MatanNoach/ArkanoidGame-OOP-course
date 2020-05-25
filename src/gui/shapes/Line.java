@@ -1,4 +1,5 @@
 //ID: 316441534
+package gui.shapes;
 
 /**
  * The class represents a line as in a cartesian coordinate system.
@@ -250,9 +251,9 @@ public class Line {
     }
 
     /**
-     * The function gets a rectangle, and finds the closest intersection point to Line's starting point.
+     * The function gets a rectangle, and finds the closest intersection point to gui.shapes.Line's starting point.
      *
-     * @param rect Rectangle to check intersection with
+     * @param rect gui.shapes.Rectangle to check intersection with
      * @return The closest intersection point. if there isn't one, return null
      */
     public Point closestIntersectionToStartOfLine(Rectangle rect) {

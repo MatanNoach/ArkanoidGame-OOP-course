@@ -1,22 +1,57 @@
 //ID: 316441534
+package gui.gameobjects;
 
 import biuoop.DrawSurface;
+import gui.gamelisteners.HitNotifier;
+import gui.shapes.Ball;
+import gui.shapes.Velocity;
+import gui.gamedata.Game;
+import gui.shapes.Point;
+import gui.shapes.Rectangle;
+import gui.gamelisteners.HitListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The class represents a collidable block on the screen.it implements the collidable interface.
  * Variables:
  * rectangle - the block's shape and location
  */
-public class Block implements Collidable, Sprite {
+public class Block implements Collidable, Sprite, HitNotifier {
     private Rectangle rectangle;
+    private List<HitListener> hitListeners;
 
     /**
-     * Block's constructor.
+     * gui.gameObjects.Block's constructor.
      *
      * @param rectangle The rectangle on the screen that represents the block
      */
     public Block(Rectangle rectangle) {
         this.rectangle = new Rectangle(rectangle);
+        this.hitListeners = new ArrayList<>();
+    }
+
+    /**
+     * The function notifies every HitListener object that this block was hit.
+     *
+     * @param hitter The hitter ball.
+     */
+    private void notifyAll(Ball hitter) {
+        List<HitListener> listeners = new ArrayList<>(this.hitListeners);
+        for (HitListener hl : listeners) {
+            hl.hitEvent(this, hitter);
+        }
+    }
+
+    @Override
+    public void addHitListener(HitListener hl) {
+        this.hitListeners.add(hl);
+    }
+
+    @Override
+    public void removeHitListener(HitListener hl) {
+        this.hitListeners.remove(hl);
     }
 
     @Override
@@ -25,7 +60,7 @@ public class Block implements Collidable, Sprite {
     }
 
     @Override
-    public Velocity hit(Point collisionPoint, Velocity currentVelocity) {
+    public Velocity hit(Ball hitter, Point collisionPoint, Velocity currentVelocity) {
         //sets initial value to the new velocity
         Velocity newVelocity = new Velocity(currentVelocity.getDx(), currentVelocity.getDy());
         double upperLeftX = this.rectangle.getUpperLeft().getX();
@@ -42,6 +77,7 @@ public class Block implements Collidable, Sprite {
                 || (collisionPoint.getY() == upperLeftY + this.rectangle.getHeight() && currentVelocity.getDy() < 0)) {
             newVelocity.setDy(currentVelocity.getDy() * -1);
         }
+        this.notifyAll(hitter);
         //Return the new velocity.
         return newVelocity;
     }

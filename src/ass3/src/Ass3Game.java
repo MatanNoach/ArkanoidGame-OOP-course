@@ -1,5 +1,7 @@
 //ID:316441534
 
+import gui.gamedata.Game;
+
 /**
  * The class runs the game.
  */

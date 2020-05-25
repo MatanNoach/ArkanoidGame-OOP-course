@@ -1,6 +1,8 @@
 //ID:316441534
+package gui.gameobjects;
 
 import biuoop.DrawSurface;
+import gui.gamedata.Game;
 
 /**
  * The interface represents a sprite object.
