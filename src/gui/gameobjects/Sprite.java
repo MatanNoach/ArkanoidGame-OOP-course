@@ -2,7 +2,7 @@
 package gui.gameobjects;
 
 import biuoop.DrawSurface;
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
 
 /**
  * The interface represents a sprite object.
@@ -25,5 +25,5 @@ public interface Sprite {
      *
      * @param g The game to add
      */
-    void addToGame(Game g);
+    void addToGame(GameLevel g);
 }

@@ -1,6 +1,7 @@
 //ID:316441534
 
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
+import gui.Levels.Level1;
 
 /**
  * The class runs the game.
@@ -12,8 +13,8 @@ public class Ass3Game {
      * @param args user arguments. Does not need any in the function
      */
     public static void main(String[] args) {
-        Game game = new Game();
-        game.initialize();
-        game.run();
+//        GameLevel gameLevel = new GameLevel(new Level1());
+//        gameLevel.initialize();
+//        gameLevel.run();
     }
 }

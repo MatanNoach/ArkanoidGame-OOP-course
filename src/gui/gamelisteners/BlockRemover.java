@@ -1,7 +1,7 @@
 //ID:316441534
 package gui.gamelisteners;
 
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
 import gui.gameobjects.Block;
 import gui.shapes.Ball;
 
@@ -12,23 +12,23 @@ import gui.shapes.Ball;
  * remainingBlock - The number of remaining blocks in the game
  */
 public class BlockRemover implements HitListener {
-    private Game game;
+    private GameLevel gameLevel;
     private Counter remainingBlocks;
 
     /**
      * Constructor.
-     * @param game The game
+     * @param gameLevel The game
      * @param remainingBlocks The number of remaining blocks
      */
-    public BlockRemover(Game game, Counter remainingBlocks) {
-        this.game = game;
+    public BlockRemover(GameLevel gameLevel, Counter remainingBlocks) {
+        this.gameLevel = gameLevel;
         this.remainingBlocks = remainingBlocks;
     }
     @Override
     public void hitEvent(Block beingHit, Ball hitter) {
         beingHit.removeHitListener(this);
-        game.removeCollidable(beingHit);
-        game.removeSprite(beingHit);
+        gameLevel.removeCollidable(beingHit);
+        gameLevel.removeSprite(beingHit);
         this.remainingBlocks.decrease(1);
     }
 }

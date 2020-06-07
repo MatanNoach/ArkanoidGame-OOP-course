@@ -5,7 +5,7 @@ import biuoop.DrawSurface;
 import gui.gamelisteners.HitNotifier;
 import gui.shapes.Ball;
 import gui.shapes.Velocity;
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
 import gui.shapes.Point;
 import gui.shapes.Rectangle;
 import gui.gamelisteners.HitListener;
@@ -93,7 +93,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
     }
 
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }

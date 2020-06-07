@@ -2,7 +2,8 @@
 package gui.gamelisteners;
 
 import biuoop.DrawSurface;
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
+import gui.gamedata.GameSettings;
 import gui.gameobjects.Sprite;
 import gui.shapes.Rectangle;
 
@@ -18,7 +19,6 @@ import java.awt.Color;
 public class ScoreIndicator implements Sprite {
     private Counter scoreCounter;
     private Rectangle rectangle;
-    static final int FONT_SIZE = 20;
 
     /**
      * Constructor.
@@ -36,11 +36,11 @@ public class ScoreIndicator implements Sprite {
         //draws the block of the score text
         int width = (int) this.rectangle.getWidth();
         int x = (int) this.rectangle.getUpperLeft().getX() + width / 2;
-        int y = (int) this.rectangle.getUpperLeft().getY() + FONT_SIZE;
+        int y = (int) this.rectangle.getUpperLeft().getY() + GameSettings.FONT_SIZE;
         this.rectangle.drawOn(d);
         //prints the text
         d.setColor(Color.BLACK);
-        d.drawText(x, y, "Score: " + scoreCounter.getValue(), FONT_SIZE);
+        d.drawText(x, y, "Score: " + scoreCounter.getValue(), GameSettings.FONT_SIZE);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ScoreIndicator implements Sprite {
     }
 
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
     }
 }

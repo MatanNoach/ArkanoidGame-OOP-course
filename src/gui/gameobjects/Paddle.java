@@ -3,7 +3,7 @@ package gui.gameobjects;
 
 import gui.shapes.Ball;
 import gui.shapes.Velocity;
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
 import biuoop.DrawSurface;
 import gui.gamedata.GameSettings;
 import biuoop.KeyboardSensor;
@@ -19,23 +19,22 @@ import gui.shapes.Rectangle;
 public class Paddle implements Sprite, Collidable {
     private Rectangle rectangle;
     private KeyboardSensor keyboard;
-    private GameSettings gameSettings;
     private int maxLeft;
     private int maxRight;
+    private double speed;
 
     /**
      * Constructor.
      *
      * @param rectangle    The rectangle
      * @param sensor       The keyboard sensor
-     * @param gameSettings The game's settings
      */
-    public Paddle(Rectangle rectangle, KeyboardSensor sensor, GameSettings gameSettings) {
+    public Paddle(Rectangle rectangle, KeyboardSensor sensor, double speed) {
         this.rectangle = new Rectangle(rectangle);
         this.keyboard = sensor;
-        this.gameSettings = gameSettings;
         this.maxRight = GameSettings.WINDOW_WIDTH - GameSettings.BLOCK_EDGE_SIZE;
         this.maxLeft = GameSettings.BLOCK_EDGE_SIZE;
+        this.speed = speed;
     }
 
     /**
@@ -46,7 +45,7 @@ public class Paddle implements Sprite, Collidable {
         double rectangleWidth = this.rectangle.getWidth();
         //if the paddle hasn't reached the right border, change the location
         if (x + rectangleWidth < this.maxRight) {
-            x += gameSettings.getSpeed();
+            x += this.speed;
             //if the paddle reached the right border after the move, then stop it
             if (x + rectangleWidth > this.maxRight) {
                 x = this.maxRight;
@@ -63,7 +62,7 @@ public class Paddle implements Sprite, Collidable {
         double x = this.rectangle.getUpperLeft().getX();
         //if the paddle hasn't reached the left border
         if (x > this.maxLeft) {
-            x -= gameSettings.getSpeed();
+            x -= speed;
             //if the paddle reached the left border after the move, then stop it
             if (x < maxLeft) {
                 x = maxLeft;
@@ -109,7 +108,7 @@ public class Paddle implements Sprite, Collidable {
     }
 
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
         g.addCollidable(this);
     }

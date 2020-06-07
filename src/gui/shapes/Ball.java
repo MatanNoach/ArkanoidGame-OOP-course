@@ -5,7 +5,7 @@ import biuoop.DrawSurface;
 import gui.gameobjects.Sprite;
 import gui.gameobjects.GameEnvironment;
 import gui.gameobjects.CollisionInfo;
-import gui.gamedata.Game;
+import gui.Levels.GameLevel;
 import gui.gamedata.GameSettings;
 import java.awt.Color;
 
@@ -167,7 +167,7 @@ public class Ball implements Sprite {
     }
 
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
     }
 }

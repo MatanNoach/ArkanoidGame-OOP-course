@@ -17,7 +17,17 @@ public class Counter {
     }
 
     /**
+     * A constructor with number as a parameter.
+     *
+     * @param num The number to set the counter to start from
+     */
+    public Counter(int num) {
+        this.num = num;
+    }
+
+    /**
      * Adds a number to the current count.
+     *
      * @param number The amount to add
      */
     public void increase(int number) {
@@ -26,6 +36,7 @@ public class Counter {
 
     /**
      * Subtract a number from the current count.
+     *
      * @param number The number to subtract
      */
     public void decrease(int number) {

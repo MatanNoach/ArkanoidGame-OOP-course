@@ -6,6 +6,7 @@ import gui.shapes.Line;
 import gui.shapes.Point;
 import gui.shapes.Rectangle;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,25 +17,13 @@ import java.util.List;
  */
 public class GameEnvironment {
     private List<Collidable> collidables;
-    private GameSettings gameSettings;
 
     /**
      * Constructor that creates a new array list of collidable items.
-     *
-     * @param gameSettings The game settings
      */
-    public GameEnvironment(GameSettings gameSettings) {
-        this.collidables = new LinkedList<>();
-        this.gameSettings = gameSettings;
+    public GameEnvironment() {
+        this.collidables = new ArrayList<>();
     }
-
-    /**
-     * @return The game settings.
-     */
-    public GameSettings getGameSettings() {
-        return this.gameSettings;
-    }
-
     /**
      * if the object isn't null, add it to the list.
      *
@@ -47,7 +36,7 @@ public class GameEnvironment {
     }
 
     /**
-     * Removes a collidable for the list
+     * Removes a collidable for the list.
      *
      * @param c The collidable to remove
      */
