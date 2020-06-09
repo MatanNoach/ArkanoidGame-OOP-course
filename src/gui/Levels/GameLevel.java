@@ -5,8 +5,9 @@ import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import gui.Animation.Animation;
 import gui.Animation.AnimationRunner;
-import gui.Animation.CountdownAnimation;
+import gui.Animation.KeyPressStoppableAnimation;
 import gui.Animation.PauseScreen;
+import gui.Animation.CountdownAnimation;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.SpriteCollection;
 import gui.gameobjects.GameEnvironment;
@@ -42,7 +43,9 @@ public class GameLevel implements Animation {
     private KeyboardSensor keyboardSensor;
     private AnimationRunner runner;
     private boolean running;
+    private boolean isLost;
     private LevelInformation information;
+    private boolean isWin;
 
     /**
      * Constructor.
@@ -62,6 +65,8 @@ public class GameLevel implements Animation {
         this.keyboardSensor = keyboardSensor;
         this.runner = ar;
         this.running = true;
+        this.isLost = false;
+        this.isWin = false;
     }
 
     /**
@@ -233,14 +238,17 @@ public class GameLevel implements Animation {
             this.scoreCounter.increase(100);
             System.out.println("Your score is " + this.scoreCounter.getValue() + " points!");
             this.running = false;
+            this.isWin = true;
         }
         //if all the balls are lost, end the game
         if (this.remainingBalls.getValue() == 0) {
             System.out.println("You Lost!");
             this.running = false;
+            this.isLost = true;
         }
         if (this.keyboardSensor.isPressed("p")) {
-            this.runner.run(new PauseScreen(this.keyboardSensor));
+            PauseScreen pauseScreen = new PauseScreen();
+            this.runner.run(new KeyPressStoppableAnimation(this.keyboardSensor, KeyboardSensor.SPACE_KEY, pauseScreen));
         }
         //notify everybody that time passed and they should act
         this.sprites.notifyAllTimePassed();
@@ -258,5 +266,19 @@ public class GameLevel implements Animation {
         this.runner.run(new CountdownAnimation(1, 3, this.sprites));
         this.running = true;
         this.runner.run(this);
+    }
+
+    /**
+     * @return True if the player won the game and false otherwise.
+     */
+    public boolean isWin() {
+        return this.isWin;
+    }
+
+    /**
+     * @return True if the player lost the game and false otherwise.
+     */
+    public boolean isLost() {
+        return this.isLost;
     }
 }

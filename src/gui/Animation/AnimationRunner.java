@@ -1,7 +1,6 @@
 //ID:316441534
 package gui.Animation;
 
-
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.Sleeper;

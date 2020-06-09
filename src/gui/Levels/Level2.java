@@ -13,7 +13,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * The class represents the second level of the game.
+ */
 public class Level2 implements LevelInformation {
     private int ballsNum;
     private List<Velocity> velocities;

@@ -8,7 +8,9 @@ import gui.gameobjects.Sprite;
 
 import java.awt.Color;
 
-
+/**
+ * The background for level 4.
+ */
 public class Background4 implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
