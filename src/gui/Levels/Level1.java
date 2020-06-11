@@ -77,7 +77,11 @@ public class Level1 implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-        Block b = new Block(new Rectangle(new Point(375, 175), 50, 50, Color.RED));
+        int x = GameSettings.WINDOW_WIDTH / 2;
+        int y = GameSettings.WINDOW_HEIGHT / 2;
+        int squareSize = 50;
+        Block b = new Block(new Rectangle(new Point((x - squareSize / 2), y - squareSize / 2),
+                squareSize, squareSize, Color.RED));
         List<Block> blockList = new ArrayList<>();
         blockList.add(b);
         return blockList;

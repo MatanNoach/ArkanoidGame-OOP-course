@@ -32,7 +32,7 @@ public class Level4 implements LevelInformation {
         this.ballsNum = 3;
         this.velocities = initializeVelocities();
         this.background = new Background4();
-        this.paddleSpeed = (int) GameSettings.SPEED;
+        this.paddleSpeed = (int) GameSettings.SPEED * 2;
         this.paddleWidth = 100;
         this.levelName = "Final four";
         this.blocksToRemove = 91;
@@ -40,10 +40,12 @@ public class Level4 implements LevelInformation {
 
     @Override
     public List<Velocity> initializeVelocities() {
+        int angle = 45;
+        int speed = (int) GameSettings.SPEED - 1;
         List<Velocity> startVelocities = new ArrayList<>();
-        Velocity v1 = new Velocity(0, 0).fromAngleAndSpeed(-45, 5);
-        Velocity v2 = new Velocity(0, 0).fromAngleAndSpeed(0, 5);
-        Velocity v3 = new Velocity(0, 0).fromAngleAndSpeed(45, 5);
+        Velocity v1 = new Velocity(0, 0).fromAngleAndSpeed(-angle, speed);
+        Velocity v2 = new Velocity(0, 0).fromAngleAndSpeed(0, speed);
+        Velocity v3 = new Velocity(0, 0).fromAngleAndSpeed(angle, speed);
         startVelocities.add(v1);
         startVelocities.add(v2);
         startVelocities.add(v3);

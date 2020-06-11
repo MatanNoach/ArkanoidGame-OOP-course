@@ -44,21 +44,26 @@ public class GameFlow {
      */
     public void runLevels(List<LevelInformation> levels) {
         int winCounter = 0;
+        //an animation that stop the run
         Animation stoppable;
+        //for each level' run until it should stop
         for (LevelInformation levelInfo : levels) {
             GameLevel level = new GameLevel(levelInfo, ks, ar, this.score);
             level.initialize();
             while (!level.shouldStop()) {
                 level.run();
             }
+            //if the stop was because the  player won, add 1 to the counter.
             if (level.isWin()) {
                 winCounter++;
+                // if he won in all levels, start Win Screen.
                 if (winCounter == levels.size()) {
                     stoppable = new WinScreen(score.getValue());
                     ar.run(new KeyPressStoppableAnimation(this.ks, KeyboardSensor.SPACE_KEY, stoppable));
                     break;
                 }
             }
+            //if the stop was  because the player lost, start Game Over screen.
             if (level.isLost()) {
                 stoppable = new GameOverScreen(score.getValue());
                 ar.run(new KeyPressStoppableAnimation(this.ks, KeyboardSensor.SPACE_KEY, stoppable));

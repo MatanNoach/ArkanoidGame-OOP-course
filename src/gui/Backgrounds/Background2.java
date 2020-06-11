@@ -13,10 +13,17 @@ import java.awt.Color;
 public class Background2 implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
+        int sunSize = 40;
+        int xSun = 100, ySun = 100;
+        int linesSpaces = 16;
+        int blocsHeight = 200;
+        d.setColor(Color.ORANGE);
+        d.fillCircle(xSun, ySun, sunSize + 10);
         d.setColor(Color.YELLOW);
-        d.fillCircle(100, 100, 40);
-        for (int i = 0; i < 40; i++) {
-            d.drawLine(100 + (i / 2), 100, 10 + 16 * i, 200);
+        d.fillCircle(xSun, ySun, sunSize);
+        //draw number line by the sun's size
+        for (int i = 0; i < sunSize; i++) {
+            d.drawLine(xSun + (i / 2), ySun, linesSpaces * i, blocsHeight);
         }
     }
 

@@ -33,16 +33,18 @@ public class Level3 implements LevelInformation {
         this.velocities = initializeVelocities();
         this.background = new Background3();
         this.paddleSpeed = (int) GameSettings.SPEED;
-        this.paddleWidth = 70;
-        this.levelName = "Green 3";
+        this.paddleWidth = 100;
+        this.levelName = "Orange 3";
         this.blocksToRemove = 40;
     }
 
     @Override
     public List<Velocity> initializeVelocities() {
+        int angle = 45;
+        int speed = (int) GameSettings.SPEED;
         List<Velocity> startVelocities = new ArrayList<>();
-        Velocity v1 = new Velocity(0, 0).fromAngleAndSpeed(-45, 5);
-        Velocity v2 = new Velocity(0, 0).fromAngleAndSpeed(45, 5);
+        Velocity v1 = new Velocity(0, 0).fromAngleAndSpeed(-angle, speed);
+        Velocity v2 = new Velocity(0, 0).fromAngleAndSpeed(angle, speed);
         startVelocities.add(v1);
         startVelocities.add(v2);
         return startVelocities;

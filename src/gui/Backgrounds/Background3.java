@@ -14,27 +14,44 @@ import java.awt.Color;
 public class Background3 implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
+        int bHeight = 200, bWidth = 125, whiteShift = 10;
+        int leftShift = 50, upShift = GameSettings.WINDOW_HEIGHT - bHeight;
+        //draw the background color
         d.setColor(Color.ORANGE);
         d.fillRectangle(0, 0, GameSettings.WINDOW_WIDTH, GameSettings.WINDOW_HEIGHT);
+        //draw the building dark base
         d.setColor(Color.darkGray);
-        d.fillRectangle(50, 400, 125, 200);
+        d.fillRectangle(leftShift, upShift, bWidth, bHeight);
+        //draw the building white base
         d.setColor(Color.white);
-        d.fillRectangle(60, 410, 115, 180);
+        d.fillRectangle(leftShift + whiteShift, upShift + whiteShift, bWidth - whiteShift, bHeight - whiteShift);
+        //draw vertical lines
+        int vSpacing = 25;
+        int linesWidth = 10;
         for (int i = 1; i <= 5; i++) {
             d.setColor(Color.darkGray);
-            d.fillRectangle(50 + i * 25, 400, 10, 200);
+            d.fillRectangle(leftShift + i * vSpacing, upShift, linesWidth, bHeight);
         }
+        //draw horizontal lines
+        int hSpacing = 40;
         for (int i = 1; i <= 4; i++) {
             d.setColor(Color.darkGray);
-            d.fillRectangle(50, 400 + i * 40, 125, 10);
+            d.fillRectangle(leftShift, upShift + i * hSpacing, bWidth, linesWidth);
         }
+        //draw pole
+        int baseHeight = 70, baseWidth = 30;
+        int poleHeight = 150;
         d.setColor(Color.GRAY);
-        d.fillRectangle(100, 330, 30, 70);
-        d.fillRectangle(110, 150, 10, 180);
+        d.fillRectangle(leftShift * 2, upShift - baseHeight, baseWidth, baseHeight);
+        d.fillRectangle(leftShift * 2 + whiteShift, upShift - baseHeight - poleHeight, baseWidth / 3, poleHeight);
+        //draw the signal
+        int smallRadius = 5, bigRadius = 15;
+        int yCenter = upShift - baseHeight - poleHeight - smallRadius;
+        int xCenter = leftShift * 2 + bigRadius;
         d.setColor(Color.red);
-        d.fillCircle(115, 140, 15);
+        d.fillCircle(xCenter, yCenter, bigRadius);
         d.setColor(Color.WHITE);
-        d.fillCircle(115, 140, 5);
+        d.fillCircle(xCenter, yCenter, smallRadius);
     }
 
     @Override

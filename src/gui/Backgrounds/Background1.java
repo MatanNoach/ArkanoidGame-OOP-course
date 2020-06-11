@@ -14,14 +14,22 @@ import java.awt.Color;
 public class Background1 implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
+        int x = GameSettings.WINDOW_WIDTH / 2;
+        int y = GameSettings.WINDOW_HEIGHT / 2;
+        int lineLength = 100;
+        int radius = 50;
+        int radiusIncrease = 20;
+        //draw background
         d.setColor(Color.lightGray);
         d.fillRectangle(0, 0, GameSettings.WINDOW_WIDTH, GameSettings.WINDOW_HEIGHT);
+        //draw the cross
         d.setColor(Color.BLACK);
-        d.drawLine(300, 200, 500, 200);
-        d.drawLine(400, 100, 400, 300);
-        d.drawCircle(400, 200, 50);
-        d.drawCircle(400, 200, 70);
-        d.drawCircle(400, 200, 90);
+        d.drawLine(x - lineLength, y, x + lineLength, y);
+        d.drawLine(x, y - lineLength, x, y + lineLength);
+        //draw the 3 circles
+        d.drawCircle(x, y, radius);
+        d.drawCircle(x, y, radius + radiusIncrease);
+        d.drawCircle(x, y, radius + radiusIncrease * 2);
     }
 
     @Override
