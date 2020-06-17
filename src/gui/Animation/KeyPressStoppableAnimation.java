@@ -50,4 +50,11 @@ public class KeyPressStoppableAnimation implements Animation {
     public boolean shouldStop() {
         return this.stop;
     }
+
+    /**
+     * Reset the stop back to false.
+     */
+    public void resetStop(){
+        this.stop = false;
+    }
 }

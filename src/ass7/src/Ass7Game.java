@@ -1,22 +1,13 @@
-//ID:316441534
-
 import biuoop.GUI;
 import gui.Animation.AnimationRunner;
-import gui.Levels.LevelInformation;
-import gui.Levels.Level1;
-import gui.Levels.Level2;
-import gui.Levels.Level3;
-import gui.Levels.Level4;
-
+import gui.Levels.*;
 import gui.gamedata.GameFlow;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The class runs the game.
- */
-public class Ass6Game {
+//ID:316441534
+public class Ass7Game {
     /**
      * The function runs the game by a list of levels.
      *
@@ -40,8 +31,8 @@ public class Ass6Game {
      */
     public static void main(String[] args) {
         List<LevelInformation> levels = new ArrayList<>();
-        levels.add(new Level1());
-        levels.add(new Level2());
+//        levels.add(new Level1());
+//        levels.add(new Level2());
         levels.add(new Level3());
         levels.add(new Level4());
         if (args.length == 0) {
