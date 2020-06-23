@@ -1,5 +1,5 @@
 //ID:316441534
-package gui.Animation;
+package gui.animation;
 
 /**
  * The interface represents a menu in the game.

@@ -2,7 +2,7 @@
 package gui.gameobjects;
 
 import biuoop.DrawSurface;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 
 /**
  * The interface represents a sprite object.

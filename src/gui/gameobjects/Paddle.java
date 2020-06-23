@@ -3,7 +3,7 @@ package gui.gameobjects;
 
 import gui.shapes.Ball;
 import gui.shapes.Velocity;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 import biuoop.DrawSurface;
 import gui.gamedata.GameSettings;
 import biuoop.KeyboardSensor;
@@ -26,8 +26,8 @@ public class Paddle implements Sprite, Collidable {
     /**
      * Constructor.
      *
-     * @param rectangle    The rectangle
-     * @param sensor       The keyboard sensor
+     * @param rectangle The rectangle
+     * @param sensor    The keyboard sensor
      */
     public Paddle(Rectangle rectangle, KeyboardSensor sensor, double speed) {
         this.rectangle = new Rectangle(rectangle);
@@ -48,7 +48,7 @@ public class Paddle implements Sprite, Collidable {
             x += this.speed;
             //if the paddle reached the right border after the move, then stop it
             if (x + rectangleWidth > this.maxRight) {
-                x = this.maxRight;
+                x = this.maxRight - rectangleWidth;
             }
         }
         //set the new location

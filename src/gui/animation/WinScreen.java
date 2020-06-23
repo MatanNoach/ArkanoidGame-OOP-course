@@ -1,15 +1,15 @@
 //ID:316441534
-package gui.Animation;
+package gui.animation;
 
 import biuoop.DrawSurface;
 
 /**
- * The class represents the Game Over screen.
+ * The class represents the Win scree.
  * variables:
  * stop - true if the screen needs to stop and false otherwise
- * score - the players score before he lost
+ * score - the players score in the end
  */
-public class GameOverScreen implements Animation {
+public class WinScreen implements Animation {
     private boolean stop;
     private int score;
 
@@ -18,14 +18,14 @@ public class GameOverScreen implements Animation {
      *
      * @param score The ending score
      */
-    public GameOverScreen(int score) {
+    public WinScreen(int score) {
         this.stop = false;
         this.score = score;
     }
 
     @Override
     public void doOneFrame(DrawSurface d) {
-        d.drawText(10, d.getHeight() / 2, "Game Over. Your score is " + score, 32);
+        d.drawText(10, d.getHeight() / 2, "You Win! Your score is " + score, 32);
     }
 
     @Override

@@ -5,7 +5,7 @@ import biuoop.DrawSurface;
 import gui.gameobjects.Sprite;
 import gui.gameobjects.GameEnvironment;
 import gui.gameobjects.CollisionInfo;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 import gui.gamedata.GameSettings;
 import java.awt.Color;
 

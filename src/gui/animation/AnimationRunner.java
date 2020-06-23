@@ -1,5 +1,5 @@
 //ID:316441534
-package gui.Animation;
+package gui.animation;
 
 import biuoop.DrawSurface;
 import biuoop.GUI;

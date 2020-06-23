@@ -1,8 +1,8 @@
 //ID:316441534
-package gui.Backgrounds;
+package gui.backgrounds;
 
 import biuoop.DrawSurface;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.Sprite;
 

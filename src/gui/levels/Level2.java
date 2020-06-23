@@ -1,7 +1,7 @@
 //ID:316441534
-package gui.Levels;
+package gui.levels;
 
-import gui.Backgrounds.Background2;
+import gui.backgrounds.Background2;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.Block;
 import gui.gameobjects.Sprite;

@@ -2,7 +2,7 @@
 package gui.gamelisteners;
 
 import biuoop.DrawSurface;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.Sprite;
 import gui.shapes.Rectangle;

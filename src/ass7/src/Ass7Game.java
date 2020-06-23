@@ -1,6 +1,6 @@
 import biuoop.GUI;
-import gui.Animation.AnimationRunner;
-import gui.Levels.*;
+import gui.animation.AnimationRunner;
+import gui.levels.*;
 import gui.gamedata.GameFlow;
 
 import java.util.ArrayList;

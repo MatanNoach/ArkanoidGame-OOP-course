@@ -1,7 +1,7 @@
 //ID:316441534
-package gui.Animation;
+package gui.animation;
 
-import gui.Levels.LevelInformation;
+import gui.levels.LevelInformation;
 import gui.gamedata.GameFlow;
 
 import java.util.List;

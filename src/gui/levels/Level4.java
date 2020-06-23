@@ -1,7 +1,7 @@
 //ID:316441534
-package gui.Levels;
+package gui.levels;
 
-import gui.Backgrounds.Background1;
+import gui.backgrounds.Background4;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.Block;
 import gui.gameobjects.Sprite;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The class represent the first level of the game.
+ * The class represents the second level of the game.
  */
-public class Level1 implements LevelInformation {
+public class Level4 implements LevelInformation {
     private int ballsNum;
     private List<Velocity> velocities;
     private int paddleSpeed;
@@ -28,20 +28,27 @@ public class Level1 implements LevelInformation {
     /**
      * Constructor.
      */
-    public Level1() {
-        this.ballsNum = 1;
+    public Level4() {
+        this.ballsNum = 3;
         this.velocities = initializeVelocities();
-        this.background = new Background1();
-        this.paddleSpeed = (int) GameSettings.SPEED;
+        this.background = new Background4();
+        this.paddleSpeed = (int) GameSettings.SPEED * 2;
         this.paddleWidth = 100;
-        this.levelName = "Direct hit";
-        this.blocksToRemove = 1;
+        this.levelName = "Final four";
+        this.blocksToRemove = 91;
     }
 
     @Override
     public List<Velocity> initializeVelocities() {
+        int angle = 45;
+        int speed = (int) GameSettings.SPEED - 1;
         List<Velocity> startVelocities = new ArrayList<>();
-        startVelocities.add(new Velocity(0, GameSettings.SPEED));
+        Velocity v1 = new Velocity(0, 0).fromAngleAndSpeed(-angle, speed);
+        Velocity v2 = new Velocity(0, 0).fromAngleAndSpeed(0, speed);
+        Velocity v3 = new Velocity(0, 0).fromAngleAndSpeed(angle, speed);
+        startVelocities.add(v1);
+        startVelocities.add(v2);
+        startVelocities.add(v3);
         return startVelocities;
     }
 
@@ -77,13 +84,19 @@ public class Level1 implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-        int x = GameSettings.WINDOW_WIDTH / 2;
-        int y = GameSettings.WINDOW_HEIGHT / 2;
-        int squareSize = 50;
-        Block b = new Block(new Rectangle(new Point((x - squareSize / 2), y - squareSize / 2),
-                squareSize, squareSize, Color.RED));
         List<Block> blockList = new ArrayList<>();
-        blockList.add(b);
+        int width = GameSettings.WINDOW_WIDTH;
+        int blockWidth = 60;
+        int lineNumber = 0;
+        Color[] colors = {Color.cyan, Color.pink, Color.white, Color.green, Color.yellow, Color.RED, Color.gray};
+        for (int i = 230; i >= 100; i -= 20) {
+            for (int j = width - blockWidth - 10; j >= GameSettings.BLOCK_EDGE_SIZE;
+                 j -= blockWidth) {
+                Block block = new Block(new Rectangle(new Point(j, i), blockWidth, 20, colors[lineNumber]));
+                blockList.add(block);
+            }
+            lineNumber++;
+        }
         return blockList;
     }
 

@@ -4,6 +4,7 @@ package gui.shapes;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class Rectangle {
     private double width;
     private double height;
     private Color color;
+    private Color stroke;
+    private Image image;
 
     /**
      * Constructor with default size.
@@ -32,6 +35,7 @@ public class Rectangle {
         this.width = 50;
         this.height = 20;
         this.color = color;
+        this.stroke = Color.black;
     }
 
     /**
@@ -44,6 +48,8 @@ public class Rectangle {
         this.width = rectangle.getWidth();
         this.height = rectangle.getHeight();
         this.color = rectangle.getColor();
+        this.stroke = rectangle.getStroke();
+        this.image = rectangle.getImage();
     }
 
     /**
@@ -59,6 +65,7 @@ public class Rectangle {
         this.width = width;
         this.height = height;
         this.color = color;
+        this.stroke = Color.black;
     }
 
     /**
@@ -138,10 +145,49 @@ public class Rectangle {
     }
 
     /**
+     * Set a new newWidth for the background.
+     *
+     * @param newWidth The new newWidth to set
+     */
+    public void setWidth(double newWidth) {
+        this.width = newWidth;
+    }
+
+    /**
      * @return The rectangle's height
      */
     public double getHeight() {
         return this.height;
+    }
+
+    /**
+     * Set a new newHeight for the background.
+     *
+     * @param newHeight The new width to set
+     */
+    public void setHeight(double newHeight) {
+        this.height = newHeight;
+    }
+
+    public Image getImage() {
+        return this.image;
+    }
+
+    /**
+     * The function sets an image for the rectangle.
+     *
+     * @param img
+     */
+    public void setImage(Image img) {
+        this.image = img;
+    }
+
+    public void setStroke(Color newStroke) {
+        this.stroke = newStroke;
+    }
+
+    public Color getStroke() {
+        return this.stroke;
     }
 
     /**
@@ -150,9 +196,15 @@ public class Rectangle {
      * @param d The drawSurface to draw on
      */
     public void drawOn(DrawSurface d) {
-        d.setColor(this.color);
-        d.fillRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);
-        d.setColor(Color.BLACK);
-        d.drawRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);
+        if (this.image == null) {
+            d.setColor(this.color);
+            d.fillRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);
+        } else {
+            d.drawImage(this.upperLeft.getXInt(), this.upperLeft.getYInt(), this.image);
+        }
+        if (this.stroke != null) {
+            d.setColor(this.stroke);
+            d.drawRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);
+        }
     }
 }

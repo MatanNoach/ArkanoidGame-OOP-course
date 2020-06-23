@@ -1,12 +1,12 @@
 //ID:316441534
 
 import biuoop.GUI;
-import gui.Animation.AnimationRunner;
-import gui.Levels.LevelInformation;
-import gui.Levels.Level1;
-import gui.Levels.Level2;
-import gui.Levels.Level3;
-import gui.Levels.Level4;
+import gui.animation.AnimationRunner;
+import gui.levels.LevelInformation;
+import gui.levels.Level1;
+import gui.levels.Level2;
+import gui.levels.Level3;
+import gui.levels.Level4;
 
 import gui.gamedata.GameFlow;
 

@@ -2,9 +2,9 @@
 package gui.gamedata;
 
 import biuoop.KeyboardSensor;
-import gui.Animation.*;
-import gui.Levels.GameLevel;
-import gui.Levels.LevelInformation;
+import gui.animation.*;
+import gui.levels.GameLevel;
+import gui.levels.LevelInformation;
 import gui.gamelisteners.Counter;
 
 import java.io.*;

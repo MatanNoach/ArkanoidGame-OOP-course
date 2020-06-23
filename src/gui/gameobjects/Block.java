@@ -5,7 +5,7 @@ import biuoop.DrawSurface;
 import gui.gamelisteners.HitNotifier;
 import gui.shapes.Ball;
 import gui.shapes.Velocity;
-import gui.Levels.GameLevel;
+import gui.levels.GameLevel;
 import gui.shapes.Point;
 import gui.shapes.Rectangle;
 import gui.gamelisteners.HitListener;
@@ -29,6 +29,11 @@ public class Block implements Collidable, Sprite, HitNotifier {
      */
     public Block(Rectangle rectangle) {
         this.rectangle = new Rectangle(rectangle);
+        this.hitListeners = new ArrayList<>();
+    }
+
+    public Block(Block b) {
+        this.rectangle = new Rectangle(b.getCollisionRectangle());
         this.hitListeners = new ArrayList<>();
     }
 

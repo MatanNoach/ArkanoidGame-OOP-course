@@ -1,9 +1,9 @@
 //ID:316441534
-package gui.Animation;
+package gui.animation;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import gui.Backgrounds.MenuBackground;
+import gui.backgrounds.MenuBackground;
 import gui.gameobjects.Sprite;
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 //ID: 316441534
 package gui.gameobjects;
 
-import gui.gamedata.GameSettings;
 import gui.shapes.Line;
 import gui.shapes.Point;
 import gui.shapes.Rectangle;

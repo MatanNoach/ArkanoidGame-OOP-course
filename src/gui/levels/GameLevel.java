@@ -1,13 +1,13 @@
 //ID:316441534
-package gui.Levels;
+package gui.levels;
 
 import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
-import gui.Animation.Animation;
-import gui.Animation.AnimationRunner;
-import gui.Animation.KeyPressStoppableAnimation;
-import gui.Animation.PauseScreen;
-import gui.Animation.CountdownAnimation;
+import gui.animation.Animation;
+import gui.animation.AnimationRunner;
+import gui.animation.KeyPressStoppableAnimation;
+import gui.animation.PauseScreen;
+import gui.animation.CountdownAnimation;
 import gui.gamedata.GameSettings;
 import gui.gameobjects.SpriteCollection;
 import gui.gameobjects.GameEnvironment;
