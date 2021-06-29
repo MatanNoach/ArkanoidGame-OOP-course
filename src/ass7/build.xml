@@ -2,7 +2,7 @@
     <!--  Define a property, which is like a variable for the build file,  -->
     <!--   with the classpath for all compilation & execution targets.  -->
     <property name="basicDirectory" value="D:\Users\Matan\Documents\IntelliJ\MyProject"/>
-    <property name="classpath" value="bin:D:/Users/Matan/Documents/IntelliJ/MyProject/biuoop-1.4.jar"/>
+    <property name="classpath" value="bin:${basicDirectory}/biuoop-1.4.jar;bin:${basicDirectory}/resources;bin:${basicDirectory}\src\gui"/>
     <property name="packages" value="${basicDirectory}\src\gui"/>
 
     <!--  Compile all java files under `src`, and export .class files into `bin`  -->

@@ -54,7 +54,6 @@ public class GameLevel implements Animation {
     private boolean isLost;
     private LevelInformation information;
     private boolean isWin;
-    private boolean help;
 
     /**
      * Constructor.
@@ -76,7 +75,6 @@ public class GameLevel implements Animation {
         this.running = true;
         this.isLost = false;
         this.isWin = false;
-        help = false;
     }
 
     /**
@@ -254,12 +252,9 @@ public class GameLevel implements Animation {
             this.running = false;
             this.isLost = true;
         }
-        if (this.keyboardSensor.isPressed("p") && !help) {
+        if (this.keyboardSensor.isPressed("p")) {
             PauseScreen pauseScreen = new PauseScreen();
             this.runner.run(new KeyPressStoppableAnimation(this.keyboardSensor, KeyboardSensor.SPACE_KEY, pauseScreen));
-            help = true;
-        } else {
-            help = false;
         }
         //notify everybody that time passed and they should act
         this.sprites.notifyAllTimePassed();

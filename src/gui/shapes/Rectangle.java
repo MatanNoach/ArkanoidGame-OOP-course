@@ -15,6 +15,8 @@ import java.util.List;
  * width - The rectangle's width
  * height - The rectangle's height
  * color - The rectangle's color
+ * stroke - The color of the rectangle's edges
+ * image - An image for the rectangle's fill
  */
 public class Rectangle {
     private Point upperLeft;
@@ -80,7 +82,7 @@ public class Rectangle {
      *
      * @return List of rectangle's 4 lines
      */
-    private java.util.List<Line> createRectangleLines() {
+    private List<Line> createRectangleLines() {
         List<Line> lines = new ArrayList<>();
         //create the other 3 points of the rectangle
         Point upperRight = new Point(this.upperLeft.getX() + width, this.upperLeft.getY());
@@ -100,7 +102,7 @@ public class Rectangle {
      * @param line The line to check intersection with
      * @return List of points
      */
-    public java.util.List<Point> intersectionPoints(Line line) {
+    public List<Point> intersectionPoints(Line line) {
         List<Point> pointsList = new ArrayList<>();
         //create the 4 rectangle lines
         List<Line> lines = createRectangleLines();
@@ -174,18 +176,22 @@ public class Rectangle {
     }
 
     /**
-     * The function sets an image for the rectangle.
-     *
-     * @param img
+     * @param img The image to set
      */
     public void setImage(Image img) {
         this.image = img;
     }
 
+    /**
+     * @param newStroke The color for the rectangle's stroke
+     */
     public void setStroke(Color newStroke) {
         this.stroke = newStroke;
     }
 
+    /**
+     * @return The rectangle stroke color
+     */
     public Color getStroke() {
         return this.stroke;
     }
@@ -196,12 +202,14 @@ public class Rectangle {
      * @param d The drawSurface to draw on
      */
     public void drawOn(DrawSurface d) {
+        //if there isn't an image, paint the color.
         if (this.image == null) {
             d.setColor(this.color);
             d.fillRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);
-        } else {
+        } else { //else, draw the image.
             d.drawImage(this.upperLeft.getXInt(), this.upperLeft.getYInt(), this.image);
         }
+        //if there is a stroke, paint it.
         if (this.stroke != null) {
             d.setColor(this.stroke);
             d.drawRectangle(this.upperLeft.getXInt(), this.upperLeft.getYInt(), (int) this.width, (int) this.height);

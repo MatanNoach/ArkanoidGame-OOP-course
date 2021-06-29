@@ -22,8 +22,9 @@ public class KeyPressStoppableAnimation implements Animation {
 
     /**
      * Constructor.
-     * @param ks The keyboard sensor
-     * @param  key The key that stops the animation
+     *
+     * @param ks        The keyboard sensor
+     * @param key       The key that stops the animation
      * @param animation The running animation
      */
     public KeyPressStoppableAnimation(KeyboardSensor ks, String key, Animation animation) {
@@ -54,7 +55,7 @@ public class KeyPressStoppableAnimation implements Animation {
     /**
      * Reset the stop back to false.
      */
-    public void resetStop(){
+    public void resetStop() {
         this.stop = false;
     }
 }

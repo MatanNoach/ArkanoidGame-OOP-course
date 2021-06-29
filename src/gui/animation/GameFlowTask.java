@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * The class runs the gameFlow task.
+ * variables:
+ * gameFlow - The gameFlow class
+ * levels - The list of levels
  */
 public class GameFlowTask implements Task<Void> {
     private GameFlow gameFlow;
@@ -27,7 +30,6 @@ public class GameFlowTask implements Task<Void> {
     @Override
     public Void run() {
         this.gameFlow.runLevels(this.levels);
-
         return null;
     }
 }

@@ -1,0 +1,11 @@
+# default values for blocks
+default height:20 width:60 stroke:color(black)
+
+# block definitions
+bdef symbol:g fill:image(giraffe.jpg)
+bdef symbol:t fill:image(tiger.jpg)
+bdef symbol:l fill:image(leopard.jpg)
+bdef symbol:z fill:image(zebra.jpg)
+
+# spacers definitions
+sdef symbol:* width:20

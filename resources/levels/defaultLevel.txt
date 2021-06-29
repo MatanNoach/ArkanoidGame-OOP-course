@@ -1,0 +1,20 @@
+START_LEVEL
+level_name:The rainbow
+ball_velocities:0,5
+background:image(clouds.png)
+paddle_speed:5
+paddle_width:100
+block_definitions:defaultBlocks.txt
+blocks_start_x:10
+blocks_start_y:150
+row_height:20
+num_blocks:78
+START_BLOCKS
+rrrrrrrrrrrrr
+ooooooooooooo
+yyyyyyyyyyyyy
+ggggggggggggg
+bbbbbbbbbbbbb
+mmmmmmmmmmmmm
+END_BLOCKS
+END_LEVEL

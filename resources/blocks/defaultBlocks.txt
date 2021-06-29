@@ -1,0 +1,13 @@
+# default values for blocks
+default height:20 width:60 stroke:color(black)
+
+# block definitions
+bdef symbol:r fill:color(red)
+bdef symbol:b fill:color(blue)
+bdef symbol:y fill:color(yellow)
+bdef symbol:g fill:color(green)
+bdef symbol:o fill:color(orange)
+bdef symbol:m fill:color(magenta)
+
+# spacers definitions
+sdef symbol:* width:50

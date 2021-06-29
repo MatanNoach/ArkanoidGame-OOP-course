@@ -15,6 +15,7 @@ import java.awt.Color;
  * countFrom - The number of seconds to start the counting from.
  * sprites - The sprites to present before the game starts
  * start - true if the game should start and false otherwise
+ * levelName - The level's name
  */
 public class CountdownAnimation implements Animation {
     private double numOfSeconds;

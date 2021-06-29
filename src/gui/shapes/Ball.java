@@ -7,6 +7,7 @@ import gui.gameobjects.GameEnvironment;
 import gui.gameobjects.CollisionInfo;
 import gui.levels.GameLevel;
 import gui.gamedata.GameSettings;
+
 import java.awt.Color;
 
 /**
@@ -57,9 +58,11 @@ public class Ball implements Sprite {
     }
 
     @Override
-    public void drawOn(DrawSurface surface) {
-        surface.setColor(this.color);
-        surface.fillCircle(this.getX(), this.getY(), this.radius);
+    public void drawOn(DrawSurface d) {
+        d.setColor(this.color);
+        d.fillCircle(this.getX(), this.getY(), this.radius);
+        d.setColor(Color.BLACK);
+        d.drawCircle(this.getX(), this.getY(), this.radius);
     }
 
     /**

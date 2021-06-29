@@ -2,12 +2,28 @@
 package gui.gamedata;
 
 import biuoop.KeyboardSensor;
-import gui.animation.*;
+import gui.animation.AnimationRunner;
+import gui.animation.Menu;
+import gui.animation.Task;
+import gui.animation.WinScreen;
+import gui.animation.ShowHiScoresTask;
+import gui.animation.GameFlowTask;
+import gui.animation.QuitTask;
+import gui.animation.MenuAnimation;
+import gui.animation.HighScoreAnimation;
+import gui.animation.Animation;
+import gui.animation.GameOverScreen;
+import gui.animation.KeyPressStoppableAnimation;
 import gui.levels.GameLevel;
 import gui.levels.LevelInformation;
 import gui.gamelisteners.Counter;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.util.List;
 
 /**
@@ -89,53 +105,60 @@ public class GameFlow {
             }
         }
         //update the highest score if needed
-        scoreUpdate();
+        highScoreUpdate();
         //reset the score
         this.score.decrease(this.score.getValue());
         //run the highScore screen
         ar.run(new KeyPressStoppableAnimation(this.ks, KeyboardSensor.SPACE_KEY, new HighScoreAnimation()));
     }
 
-    public void scoreUpdate() {
+    /**
+     * The function updates the highScore if needed.
+     */
+    public void highScoreUpdate() {
         //read the current high score. if the new score is higher, update the file. else, do nothing.
         BufferedReader br = null;
         try {
-            File file = new File("src\\ass7\\src\\highScores.txt");
+            File file = new File("src\\highScores.txt");
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
             String line = br.readLine();
             String[] str = line.split(" ");
             int topScore = Integer.parseInt(str[str.length - 1]);
             if (topScore < score.getValue()) {
-                writeScore();
+                writeNewHighScore();
             }
         } catch (Exception e) {
             //if the file does not exist, create it.
-            writeScore();
+            writeNewHighScore();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (Exception e) {
-                    System.out.println("Couldn't close the file");
+                    System.out.println("(GameFlow.java) Couldn't close the file highScores.txt");
                 }
             }
         }
     }
 
-    public void writeScore() {
+    /**
+     * The function writes the new high score to the highScores.txt file.
+     */
+    public void writeNewHighScore() {
         OutputStreamWriter os = null;
         try {
-            File file = new File("src\\ass7\\src\\highScores.txt");
+            //write the new score value to the file.
+            File file = new File("src\\highScores.txt");
             os = new OutputStreamWriter(new FileOutputStream(file));
             os.write("The highest score so far is: " + this.score.getValue());
         } catch (Exception e) {
-            System.out.println("Something went wrong while writing!");
+            System.out.println("(GameFlow.java) Something went wrong while writing to highScores.txt");
         } finally {
             if (os != null) {
                 try {
                     os.close();
                 } catch (Exception e) {
-                    System.out.println("Failed closing the file!");
+                    System.out.println("(GameFlow.java) Couldn't close the file highScores.txt");
                 }
             }
         }

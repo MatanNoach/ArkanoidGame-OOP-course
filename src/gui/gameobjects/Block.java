@@ -16,7 +16,8 @@ import java.util.List;
 /**
  * The class represents a collidable block on the screen.it implements the collidable interface.
  * Variables:
- * rectangle - the block's shape and location
+ * rectangle - The block's shape and location
+ * hitListeners - A list of objects who act when the block get hit
  */
 public class Block implements Collidable, Sprite, HitNotifier {
     private Rectangle rectangle;
@@ -32,6 +33,10 @@ public class Block implements Collidable, Sprite, HitNotifier {
         this.hitListeners = new ArrayList<>();
     }
 
+    /**
+     * Constructor by Block object.
+     * @param b
+     */
     public Block(Block b) {
         this.rectangle = new Rectangle(b.getCollisionRectangle());
         this.hitListeners = new ArrayList<>();

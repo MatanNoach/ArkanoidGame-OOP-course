@@ -2,6 +2,9 @@
 package gui.animation;
 
 import biuoop.DrawSurface;
+import gui.gamedata.GameSettings;
+
+import java.awt.*;
 
 /**
  * The class represents the Win scree.
@@ -25,7 +28,11 @@ public class WinScreen implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d) {
-        d.drawText(10, d.getHeight() / 2, "You Win! Your score is " + score, 32);
+        d.setColor(Color.yellow);
+        d.fillRectangle(0,0,GameSettings.WINDOW_WIDTH,GameSettings.WINDOW_HEIGHT);
+        d.setColor(Color.BLACK);
+        d.drawText(GameSettings.HEADLINE_X, GameSettings.HEADLINE_Y,
+                "You Win! Your score is " + score, GameSettings.FONT_SIZE * 2);
     }
 
     @Override

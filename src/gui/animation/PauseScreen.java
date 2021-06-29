@@ -2,6 +2,9 @@
 package gui.animation;
 
 import biuoop.DrawSurface;
+import gui.gamedata.GameSettings;
+
+import java.awt.*;
 
 /**
  * The class is responsible for the pause screen.
@@ -20,7 +23,11 @@ public class PauseScreen implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d) {
-        d.drawText(10, d.getHeight() / 2, "paused -- press space to continue", 32);
+        d.setColor(Color.orange);
+        d.fillRectangle(0,0,GameSettings.WINDOW_WIDTH,GameSettings.WINDOW_HEIGHT);
+        d.setColor(Color.white);
+        d.drawText(GameSettings.HEADLINE_X, GameSettings.HEADLINE_Y,
+                "paused -- press space to continue", GameSettings.FONT_SIZE * 2);
     }
 
     @Override
