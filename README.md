@@ -56,8 +56,21 @@ Recommended: Apache ant installed on the computer. The latest version can be fou
     ant compile
     ant -Dargs"levelName.txt" run
    ```
-
-
-
-
-
+## Additional Features
+### Creating Customize Levels
+There is a feature of creating customize set of levels. In order to create it, you need to write a .txt file in the following format:
+* each property name is followed by : and the value 
+1) START_LEVEL - a line that marks the start of level properties. no value should come after
+2) level_name: the level name
+3) ball_velocities: angle,speed. for multiple balls, add space and another angle,speed
+4) background: color or image(imagename.jpg/png)
+5) paddle_speed: a number
+6) paddle_width: a number
+7) block_definitions: a file with the blocks definition
+8) blocks_start_x: the start x value of the first block
+9) blocks_start_y: the start y value of the first block
+10) row_height: a row height
+11) num_blocks: the total number of blocks in the level
+12) START_BLOCKS: the start of the block definition
+13) END_BLOCKS: the end of the blocks definition
+14) END_LEVEL: the end of the level definition
